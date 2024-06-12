@@ -8,3 +8,6 @@ Goal Date: end of summer
 Resources: Spotify documentation, Youtube, any online resource
 
 Individual Project
+
+Test push by Vic 
+Test 2 
