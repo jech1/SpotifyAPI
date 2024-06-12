@@ -7,7 +7,4 @@ Goal for this project: Learn something new, continue working with API's
 Goal Date: end of summer 
 Resources: Spotify documentation, Youtube, any online resource
 
-Individual Project
-
-Test push by Vic 
-Test 2 
+Project between jech1 and drogbafc
