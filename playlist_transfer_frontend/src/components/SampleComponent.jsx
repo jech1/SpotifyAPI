@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+//This sample's components purpose is to be a simple example of how to fetch data from the backend
 const SampleComponent = () => {
     const [message, setMessage] = useState('');
 
