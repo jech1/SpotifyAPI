@@ -12,3 +12,6 @@ const Logout = () => {
 };
 
 export default Logout;
+
+// method to log out user
+// done with the logout function from the useAuth0 hook

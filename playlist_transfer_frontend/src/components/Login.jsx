@@ -12,3 +12,6 @@ const Login = () => {
 };
 
 export default Login;
+
+// Redirecting users to Auth0 login page
+// done with the loginWithRedirect function from the useAuth0 hook
