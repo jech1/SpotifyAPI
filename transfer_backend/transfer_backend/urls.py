@@ -16,15 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('transfer.urls')),  # Including the transfer app's URLs for API fetching
+    path('transfer/', include('transfer.urls')),
 ]

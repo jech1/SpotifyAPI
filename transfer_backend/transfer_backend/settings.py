@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,3 +132,8 @@ CORS_ALLOW_ORIGINS = [
     'http://localhost:3000',  # Example: React development server
     #'http://your-frontend-domain.com',  # Example: Your production front-end domain
 ]
+
+
+SPOTIFY_CLIENT_ID = config('SPOTIFY_CLIENT_ID')
+SPOTIFY_CLIENT_SECRET = config('SPOTIFY_CLIENT_SECRET')
+SPOTIFY_REDIRECT_URI = 'http://localhost:8000/transfer/callback'
