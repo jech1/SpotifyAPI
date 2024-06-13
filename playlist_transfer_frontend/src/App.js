@@ -9,6 +9,8 @@ import SourceTwo from './components/SourceTwo';
 import Login from './components/Login';
 import Playlists from './components/Playlists';
 import SampleComponent from './components/SampleComponent';
+import { Auth0Provider } from '@auth0/auth0-react';
+import SampleComponent from './components/SampleComponent';
 
 function App() {
   return (
@@ -24,6 +26,18 @@ function App() {
     </Router>
   );
 }
+
+const App = () => {
+  return (
+    <Auth0Provider
+      domain="dev-6xq9vz6q.us.auth0.com"
+      clientId="v6z2wZ9VdXv9G7J6u6Q4qT4JtJm2l4s0"
+      redirectUri={window.location.origin}
+    >
+      <App />
+    </Auth0Provider>
+  );
+};
 
 
 export default App;
