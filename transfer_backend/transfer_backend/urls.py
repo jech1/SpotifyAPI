@@ -26,5 +26,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('transfer.urls')),  # Include the transfer app's URLs
+    path('api/', include('transfer.urls')),  # Including the transfer app's URLs for API fetching
 ]
