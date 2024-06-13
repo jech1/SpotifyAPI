@@ -6,6 +6,8 @@ from jose import jwt
 # Create your views here.
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+#Recheck this import for the future
+from transfer.models import Playlist
 
 @csrf_exempt
 def sample_api(request):
