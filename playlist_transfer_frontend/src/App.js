@@ -11,6 +11,7 @@ import Playlists from './components/Playlists';
 import SampleComponent from './components/SampleComponent';
 import { Auth0Provider } from '@auth0/auth0-react';
 import SampleComponent from './components/SampleComponent';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Playlists" component={Playlists} />
         <Route path="/SourceTwo" component={SourceTwo} />
         <Route path="/SampleComponent" component={SampleComponent} />
+        <Route path="/Logout" component={Logout} />
       </Routes>
     </Router>
   );
@@ -30,6 +32,8 @@ function App() {
 const App = () => {
   return (
     <Auth0Provider
+    //The domain and clientId are specific to your Auth0 application
+    //Have to add our own info into here 
       domain="dev-6xq9vz6q.us.auth0.com"
       clientId="v6z2wZ9VdXv9G7J6u6Q4qT4JtJm2l4s0"
       redirectUri={window.location.origin}
