@@ -1,34 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from jose import jwt
 from django.conf import settings
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-#Recheck this import for the future
 from transfer.models import Playlist
 import requests
-from django.shortcuts import redirect
-from django.urls import path
-from .views import spotify_login, spotify_callback
+import urllib.parse
+from jose import jwt
+
+def home(request):
+    return render(request, 'home.html')
 
 @csrf_exempt
 def sample_api(request):
     return JsonResponse({"message": "Hello from Django!"})
-
-# Allows us to see if the Django server is running
-# by visiting http://localhost:8000/api/sample/ in a browser
-
-#AUTH0_DOMAIN = 'dev-7v8z1v7v.us.auth0.com'
-#API_IDENTIFIER = 'https://transfer-backend'
-#ALGORITHMS = ["RS256"]
 
 def get_playlists(request):
     auth_header = request.headers.get('Authorization', None)
     if auth_header:
         token = auth_header.split(" ")[1]
         try:
-            #jwt.decode(token, None, algorithms=["RS256"], audience=API_IDENTIFIER)
             playlists = Playlist.objects.all().values()
             return JsonResponse(list(playlists), safe=False)
         except jwt.ExpiredSignatureError:
@@ -39,7 +29,7 @@ def get_playlists(request):
             return JsonResponse({"error": "Unable to parse authentication token."}, status=401)
     return JsonResponse({"message": "Authorization header is expected"}, status=401)
 
-#adding spotify callback view to handle redirect after using authorization
+import urllib.parse
 
 def spotify_login(request):
     scopes = 'user-library-read playlist-read-private'
@@ -48,7 +38,7 @@ def spotify_login(request):
         'response_type': 'code',
         'redirect_uri': settings.SPOTIFY_REDIRECT_URI,
         'scope': scopes
-    }   
+    }
     url = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(query)}"
     return redirect(url)
 
@@ -63,11 +53,6 @@ def spotify_callback(request):
         'client_secret': settings.SPOTIFY_CLIENT_SECRET
     })
     response_data = response.json()
-    access_token = response_data['access_token']
+    access_token = response_data.get('access_token', '')
 
     return JsonResponse(response_data)
-
-urlpatterns = [
-    path('spotify-login/', spotify_login, name='spotify-login'),
-    path('callback/', spotify_callback, name='spotify-callback'),
-]
